@@ -50,7 +50,7 @@ class Image
   def indexer
     @array.each_with_index do |row, row_index|
       row.each_with_index do |pixel, col_index|
-        @ones.push [row_index, col_index] if pixel == 1
+        @ones << [row_index, col_index] if pixel == 1
       end
     end
     @ones
@@ -64,12 +64,9 @@ class Image
     end
   end
 
-  def manhattan_image
-    @array.each do |row|
-      row.each do |pixel|
-        print pixel
-      end
-      puts
+  def output_image
+    @array.each do |array|
+      puts array.join
     end
   end
 
@@ -77,22 +74,22 @@ class Image
     distance.times do
       transform
     end
-    manhattan_image
+    output_image
   end
 end
 
 image = Image.new(
   [
+    [0, 0, 0, 0, 0, 0, 0, 0, 1],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 1]
   ]
 )
 
-image.blur(2)
+image.blur(5)

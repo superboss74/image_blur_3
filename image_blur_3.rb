@@ -74,7 +74,6 @@ class Image
     distance.times do
       transform
     end
-    output_image
   end
 end
 
@@ -92,4 +91,5 @@ image = Image.new(
   ]
 )
 
-image.blur(5)
+image.blur(2)
+image.output_image
